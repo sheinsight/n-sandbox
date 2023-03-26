@@ -1,0 +1,33 @@
+name: Check Pull Request
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: "https://registry.npmjs.org/"
+
+      - name: Use Pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ vars.PNPM_VERSION }}
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Test
+        run: pnpm run test
