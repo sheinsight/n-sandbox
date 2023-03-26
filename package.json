@@ -7,6 +7,14 @@
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs",
+      "default": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "keywords": [],
   "author": "ityuany",
   "homepage": "https://github.com/sheinsight/n-sandbox",
