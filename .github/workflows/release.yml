@@ -21,9 +21,7 @@ jobs:
       - name: Use Pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: ${{ vars.PNPM_VERSION }}
-      - name: Install pnpm
-        run: npm install -g pnpm
+          version: ${{ vars.PNPM_7_VERSION }}
 
       - name: Install dependencies
         run: pnpm install
@@ -35,6 +33,6 @@ jobs:
         run: pnpm test # 确保你的项目有一个 "test" script 在 package.json 中
 
       - name: Publish package
-        run: pnpm publish --access public # 使用 `--access public` 选项来发布公共包
+        run: pnpm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.SHINED_NPM_PUBLISH_TOKEN }}
