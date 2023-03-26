@@ -8,26 +8,30 @@ env:
   NODE_VERSION: "14.x"
 
 jobs:
-  install:
+  test:
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: install pnpm
+      - name: Use Pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 7.30.1
 
-      - name: use Node.js
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "14.x"
+          node-version: ${{ matrix.node-version }}
           registry-url: "https://registry.npmjs.org/"
           cache: "pnpm"
 
-      - name: install dependencies
+      - name: Install Dependencies
         run: pnpm i
 
-      - name: test
+      - name: Test
         run: pnpm run test
