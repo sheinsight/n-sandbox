@@ -1,6 +1,5 @@
 import { expect, it, describe } from "vitest";
 import { sandbox } from "./index";
-import path from "node:path";
 
 describe("sandbox", () => {
   it("should run a function in a sandbox", async () => {
