@@ -1,0 +1,23 @@
+{
+  "name": "@shined/n-sandbox",
+  "version": "0.0.1",
+  "description": "The sandbox runtime environment of Node can support any advanced syntax as well as TypeScript.",
+  "scripts": {
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "build": "father build"
+  },
+  "keywords": [],
+  "author": "ityuany",
+  "packageManager": "pnpm@7.30.1",
+  "license": "MIT",
+  "dependencies": {
+    "esbuild": "^0.17.14",
+    "pirates": "^4.0.5"
+  },
+  "devDependencies": {
+    "@vitest/coverage-c8": "^0.29.7",
+    "father": "^4.1.7",
+    "vitest": "^0.29.7"
+  }
+}
